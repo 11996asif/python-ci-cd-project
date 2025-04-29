@@ -44,12 +44,7 @@ jobs:
       run: |
         chmod 644 project-artifact.zip
 
-    # Step 7: Install AWS CLI
-    - name: Install AWS CLI
-      run: |
-        curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-        unzip awscliv2.zip
-        sudo ./aws/install
+ 
 
     # Step 8: Upload build artifact to S3
     - name: Upload artifact to S3
