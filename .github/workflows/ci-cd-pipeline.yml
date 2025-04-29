@@ -72,6 +72,6 @@ jobs:
         key: ${{ secrets.EC2_PRIVATE_KEY }}
         script: |
           # SSH into the EC2 instance and deploy the project
-          cd /path/to/your/app
+          cd /home/ubuntu/my-python-app
           aws s3 cp s3://your-project-build-artifacts/builds/project-artifact-${{ github.sha }}.zip /tmp/project-artifact.zip
-          unzip /tmp/project-artifact.zip -d /path/to/your/app
+          unzip /tmp/project-artifact.zip -d /home/ubuntu/my-python-app
