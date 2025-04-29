@@ -32,7 +32,7 @@ jobs:
     # Step 4: Run tests (optional step to validate code)
     - name: Run tests
       run: |
-        pytest
+        PYTHONPATH=. pytest
 
     # Step 5: Build your project (create a .zip artifact)
     - name: Build project
