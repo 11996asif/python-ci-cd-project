@@ -1,6 +1,6 @@
 def hello():
     print("Hello from Python CI/CD Pipeline!")
-    return "Deployment Successful"
+    return "Hello, CI/CD!"
 
 if __name__ == "__main__":
     hello()
