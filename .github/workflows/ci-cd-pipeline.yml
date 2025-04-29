@@ -43,9 +43,8 @@ jobs:
     - name: Upload artifact to S3
       uses: jakejarvis/s3-sync-action@master
       with:
-        source_dir: './project-artifact.zip'
-        destination_bucket: your-project-build-artifacts
-        destination_key: 'builds/project-artifact-${{ github.sha }}.zip'
+        entryPoint: './project-artifact.zip'
+        args: --bucket your-project-build-artifacts --key 'builds/project-artifact-${{ github.sha }}.zip'
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -67,8 +66,9 @@ jobs:
         username: ${{ secrets.EC2_USER }}
         key: ${{ secrets.EC2_PRIVATE_KEY }}
         script: |
+          # SSH into the EC2 instance and deploy the project
           cd /path/to/your/app
           aws s3 cp s3://your-project-build-artifacts/builds/project-artifact-${{ github.sha }}.zip /tmp/project-artifact.zip
           unzip /tmp/project-artifact.zip -d /path/to/your/app
           # Add other deployment steps (restart services, etc.)
-
+          sudo systemctl restart your-app-service
